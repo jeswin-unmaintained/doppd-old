@@ -55,16 +55,17 @@ Nobody else can read
 dopped.com/songs/<id_of_song>
 
 You can set permissions on lists as well. Only .poole and bowman can read/write.
-doppd.com/songs/read <poole's sig> .poole
-doppd.com/songs/write <poole's sig> .poole
-doppd.com/songs/delete <poole's sig> .poole
-doppd.com/songs/write <poole's sig> .bowman
-doppd.com/songs/read <poole's sig> .bowman
+doppd.com/songs/write .poole <poole's sig> .bowman
+doppd.com/songs/read .poole <poole's sig> .bowman
 
 Now the list is not world writable
 doppd.com/songs Sussudio, Phil Collins, yes
 => returns nothing
 
-Queries are lists themselves, with a field called query
-doppd/songs/query/get-by-owner name string, s => s.filter(s.owner == ${name})
-doppd/songs/query/get-by-owner [["name", "string"], ["query", `s => s.filter(s.owner == ${name}`]]
+Queries are defined on the query field
+doppd.com/songs/query/by-owner name string, query s => s.filter(s.owner == ${name})
+doppd.com/songs/query/by-owner [["name", "string"], ["query", `s => s.filter(s.owner == ${name}`]]
+
+Do a query
+doppd.com/songs/query/by-owner ".poole"
+=> Returns matches
