@@ -1,4 +1,4 @@
-Create a new list by writing on to it
+Create a new list by writing on to an empty list
 ```
 doppd.com/songs Morphine's Cure for Pain
 => returns id of new record
