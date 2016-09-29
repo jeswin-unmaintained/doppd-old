@@ -50,6 +50,9 @@ Add a song
 doppd.com/songs/.poole <poole's sig> Cure for Pain, Morphine, yes
 => returns id
 
+Get all records added by .poole
+doppd.com/songs/.poole
+
 Make it readable only by your friend .bowman
 doppd.com/songs/<id_of_song>/read <poole's sig> .bowman
 
@@ -81,7 +84,7 @@ doppd.com/songs/query/by-owner [".poole"]
 => Returns matches
 
 Delete everything .bowman has written
-doppd.com .bowman <bowman's sig> undefined
+doppd.com/.bowman <bowman's sig> undefined
 
 Delete everything .bowman has written into a list
-doppd.com/songs .bowman <bowman's sig> undefined
+doppd.com/songs/.bowman <bowman's sig> undefined
