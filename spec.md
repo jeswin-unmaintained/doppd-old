@@ -50,7 +50,7 @@ doppd.com/songs
 
 Update a field
 ```
-doppd.com/songs[<id>]={ ...a[<id>], title: "Lover, You Should've Come Over" }
+doppd.com/songs[<id>]={ ...songs[<id>], title: "Lover, You Should've Come Over" }
 ```
 
 Delete an item
