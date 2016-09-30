@@ -10,14 +10,25 @@ But feel free to use POST is the message is too long.
 Whatever comes after the first slash must be in body.
 
 Ok, now give us your public key.
+You do that by pushing a value to the array called keys.
 ```
-doppd.com/keys.push("poole", pooles_public_key)
+doppd.com/keys.push(["poole", pooles_public_key])
 => returns length of keys, which equals (id of inserted row) + 1
 ```
 
 You can see what you just did
 ```
 doppd.com/keys[<id>]
+```
+
+Set a variable
+```
+doppd.com/jeffb = { name: "Jeff Buckley", born: 1966 }
+```
+
+Access that variable
+```
+doppd.com/jeffb
 ```
 
 See that? it is just JS!
