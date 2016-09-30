@@ -48,9 +48,35 @@ doppd.com/songs
 => returns list of songs in the list
 ```
 
-Update a field
+So is filtering
 ```
-doppd.com/songs[<id>]={ ...songs[<id>], title: "Lover, You Should've Come Over" }
+doppd.com/songs.filter(s => s.artist === "Jeff Buckley")
+=> returns list of songs written by Jeff Buckley
+```
+
+Read specific fields
+```
+doppd.com/songs.filter(s => s.artist === "Jeff Buckley").map(s => s.artist);
+```
+
+Pagination
+```
+doppd.com/songs.slice(0,10);
+```
+
+Ordering is relatively harder. Need ideas. :/
+```
+doppd.com/songs.filter(s => s.artist === "Jeff Buckley").sort((a, b) => a.title > b.title)
+```
+
+Update a single field
+```
+doppd.com/songs[<id>].title="Lover, You Should've Come Over"
+```
+
+Update one or many fields
+```
+doppd.com/songs[<id>]={ ...songs[<id>], title: "Lover, You Should've Come Over", artist: "Jeff Buckley" }
 ```
 
 Delete an item
@@ -61,19 +87,23 @@ doppd.com/songs[<id>]=undefined
 Define a function
 First parameter will be an object (key-val pair) representing everything inside doppd.
 ```
-doppd.com/hello=(doppd,x)=>doppd.songs.length+x
-```
-
-Or this
-```
 doppd.com
 --- body
-hello = function(doppd, x) {
-  return doppd.songs.length + x;
+hasManySongs = async function(doppd, threshold) {
+  const numSongs = await doppd.query(x => x.songs.length);
+  return numSongs > threshold;
 }
+=> returns true/false
+```
+
+Do it in single line, too
+```
+doppd.com/hasManySongs = async function(doppd, threshold) { const numSongs = await doppd.query(x => x.songs.length); return numSongs > threshold; }
+=> returns true/false
 ```
 
 Call a function
 ```
-doppd.com/hello(10)
+doppd.com/hasManySongs(10)
 => returns songs.length + 10
+```
