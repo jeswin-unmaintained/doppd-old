@@ -106,8 +106,13 @@ First parameter will be an object (key-val pair) representing everything inside 
 ```
 doppd.com
 --- body
-hasManySongs = async function(doppd, threshold) {
-  const numSongs = await doppd.query(x => x.songs.length);
+hasManySongs = async function(artist, threshold) {
+  const numSongs = await request(`doppd.songs.filter(x => x.artist === "${artist}"`));
+  return numSongs > threshold;
+}
+# OR
+hasManySongs = async function(artist, threshold) {
+  const numSongs = await this.songs.filter(x => x.artist === artist);
   return numSongs > threshold;
 }
 => returns true/false
@@ -115,7 +120,7 @@ hasManySongs = async function(doppd, threshold) {
 
 Do it in single line, too
 ```
-doppd.com/hasManySongs = async function(doppd, threshold) { const numSongs = await doppd.query(x => x.songs.length); return numSongs > threshold; }
+doppd.com/hasManySongs = async function(artist, threshold) { const numSongs = await request(`doppd.songs.filter(x => x.artist === "${artist}"`)); return numSongs > threshold; }
 => returns true/false
 ```
 
