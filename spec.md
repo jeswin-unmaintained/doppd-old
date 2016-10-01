@@ -31,6 +31,12 @@ Access that variable
 doppd.com/jeffb
 ```
 
+Create a "namespace"
+```
+doppd.com/foo={}
+doppd.com/foo.bar=10
+```
+
 See that? it is just JS!
 
 Adding an item automatically creates a list, if it doesn't exist.
