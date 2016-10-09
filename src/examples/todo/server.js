@@ -1,30 +1,39 @@
-//Transipiles to
-//  await db.createCollection("tasks")
-
+/*
+  wget http://ak7.nodejam.com/db.tasks=[]
+*/
 async function init() {
-  await request(`http://ak7.nodejam.com/db.tasks=[]`);
+  await request(`/db.tasks=[]`);
 
   //Same as
   await $nodejam(db => db.tasks = []);
 }
 
+/*
+  wget http://ak7.nodejam.com/db.tasks.push({ user: ${item.user}, description: ${item.description} })
+*/
 async function addTask(item) {
-  await request(`http://ak7.nodejam.com/db.tasks.push({ user: ${item.user}, description: ${item.description} })`);
+  await request(`/db.tasks.push({ user: ${item.user}, description: ${item.description} })`);
 
   //Same as
   await $nodejam(db => db.tasks.push(item));
 }
 
+/*
+  wget http://ak7.nodejam.com/db.tasks
+*/
 async function showAllTasks() {
-  return await request(`http://ak7.nodejam.com/db.tasks`)
+  return await request(`/db.tasks`)
 
   //Same as
-  await $nodejam(db => db.tasks);
+  return await $nodejam(db => db.tasks);
 }
 
+/*
+  wget http://ak7.nodejam.com/db.tasks.filter(t => t.user === "${name}")
+*/
 async function findTasksByUser(name) {
-  return request(`http://ak7.nodejam.com/db.tasks.filter(t => t.user === "${name}")`);
+  return request(`/db.tasks.filter(t => t.user === "${name}")`);
 
   //Same as
-  await $nodejam(db => db.tasks.filter(t => t.user === name));
+  return await $nodejam(db => db.tasks.filter(t => t.user === name));
 }
