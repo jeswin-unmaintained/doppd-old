@@ -10,6 +10,7 @@ async function init() {
 
 /*
   wget http://ak7.nodejam.com/db.tasks.push({ user: ${item.user}, description: ${item.description} })
+  wget http://ak7.nodejam.com/db.tasks.push(item)?item={ user: ${item.user}, description: ${item.description} }
 */
 async function addTask(item) {
   await request(`/db.tasks.push({ user: ${item.user}, description: ${item.description} })`);
